@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const app  = express();
 const userRoutes = require('./routes/user');
 const { connectToDB } = require('./config/db');
@@ -12,6 +13,7 @@ app.listen(PORT, () => {
 })
 
 app.use(express.json());
+app.use(cors());
 
 app.get("/", (req, res) => {
     res.send("Back end API is running...");

@@ -1,3 +1,4 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import {
   FormControl,
@@ -6,19 +7,19 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, RouterModule],
+  imports: [FormsModule, ReactiveFormsModule, RouterModule, HttpClientModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
 })
 export class RegisterComponent {
   registerForm!: FormGroup;
 
-  constructor() {
+  constructor(private http: HttpClient, private router: Router) {
     this.registerForm = new FormGroup({
       username: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -28,5 +29,16 @@ export class RegisterComponent {
 
   register() {
     console.log(this.registerForm.value);
+    this.http.post('http://localhost:3000/user/register', this.registerForm.value).subscribe({
+      next: (res: any) => {
+        if(res.status){
+          this.registerForm.reset()
+          this.router.navigate(['/login'])
+        }
+      },
+      error: (err) => {
+        console.log(err)
+      }
+    })
   }
 }
