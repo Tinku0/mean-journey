@@ -1,1 +1,16 @@
-<p>register works!</p>
+<div class="flex justify-center items-center h-screen">
+    <div class="shadow-sm p-3 rounded-md">
+        <form [formGroup]="registerForm" (ngSubmit)="register()">
+            <div class="flex flex-col gap-4">
+                <h3 class="font-bold">Register</h3>
+                <input type="text" class="border-1 rounded-sm p-2" formControlName="username" placeholder="Username" />
+                <input type="text" class="border-1 rounded-sm p-2" formControlName="email" placeholder="Email" />
+                <input type="text" class="border-1 rounded-sm p-2" formControlName="password" placeholder="Password" />
+            </div>
+            <div class="flex items-center mt-2">
+                <button class="shadow-sm py-1 px-2 rounded-sm cursor-pointer hover:bg-[skyblue] hover:text-white" type="submit">Register</button>
+                <a class="ms-auto" [routerLink]="['/login']">Login</a>
+            </div>
+        </form>
+    </div>
+</div>

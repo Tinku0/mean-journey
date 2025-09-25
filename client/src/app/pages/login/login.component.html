@@ -6,7 +6,10 @@
                 <input type="text" class="border-1 rounded-sm p-2" formControlName="username" placeholder="Username" />
                 <input type="text" class="border-1 rounded-sm p-2" formControlName="password" placeholder="Password" />
             </div>
-            <button class="shadow-sm py-1 px-2 mt-2 rounded-sm cursor-pointer hover:bg-[skyblue] hover:text-white" type="submit">Login</button>
+            <div class="flex items-center mt-2">
+                <button class="shadow-sm py-1 px-2 rounded-sm cursor-pointer hover:bg-[skyblue] hover:text-white" type="submit">Login</button>
+                <a class="ms-auto" [routerLink]="['/register']">Register</a>
+            </div>
         </form>
     </div>
 </div>
