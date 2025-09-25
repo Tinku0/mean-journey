@@ -1,0 +1,12 @@
+<div class="flex justify-center items-center h-screen">
+    <div class="shadow-sm p-3 rounded-md">
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <div class="flex flex-col gap-4">
+                <h3 class="font-bold">Login</h3>
+                <input type="text" class="border-1 rounded-sm p-2" formControlName="username" placeholder="Username" />
+                <input type="text" class="border-1 rounded-sm p-2" formControlName="password" placeholder="Password" />
+            </div>
+            <button class="shadow-sm py-1 px-2 mt-2 rounded-sm cursor-pointer hover:bg-[skyblue] hover:text-white" type="submit">Login</button>
+        </form>
+    </div>
+</div>
