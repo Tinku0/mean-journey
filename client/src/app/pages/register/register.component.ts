@@ -28,7 +28,6 @@ export class RegisterComponent {
   }
 
   register() {
-    console.log(this.registerForm.value);
     this.http.post('http://localhost:3000/user/register', this.registerForm.value).subscribe({
       next: (res: any) => {
         if(res.status){
