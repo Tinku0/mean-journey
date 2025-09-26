@@ -21,7 +21,6 @@ export class RegisterComponent {
 
   constructor(private http: HttpClient, private router: Router) {
     this.registerForm = new FormGroup({
-      username: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', Validators.required),
     });
