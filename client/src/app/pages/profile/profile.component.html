@@ -2,6 +2,7 @@
     <form [formGroup]="profileForm" (ngSubmit)="updateProfile()">
         <div class="shadow-sm bg-white p-3 rounded-sm min-w-70 flex flex-col gap-3">
             <p class="font-bold">Profile</p>
+            <input readonly type="text" placeholder="Email" formControlName="email" class="w-100 border border-gray-300 rounded-sm p-2" />
             <input type="text" placeholder="Name" formControlName="name" class="w-100 border border-gray-300 rounded-sm p-2" />
             <select class="w-100 border border-gray-300 rounded-sm p-2" formControlName="gender">
                 <option value="">Select</option>

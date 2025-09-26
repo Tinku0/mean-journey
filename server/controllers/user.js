@@ -41,4 +41,16 @@ const updateProfile = async (req, res, next) => {
     }
 }
 
-module.exports = { registerUser, loginUser, updateProfile };
+const getProfile = async (req, res, next) => {
+    const  { id } = req.user;
+    try {
+        const user = await UserModel.findOne({_id: id});
+        const safeUser = user.toObject();
+        delete safeUser.password;
+        res.status(200).json({ message: 'Profile fecthed succesfully', user: safeUser })
+    } catch (error) {
+        next(error)
+    }
+}
+
+module.exports = { registerUser, loginUser, updateProfile, getProfile };
