@@ -31,7 +31,7 @@ export class LoginComponent {
       next: (res: any) => {
         if(res.status){
           this.loginForm.reset()
-          localStorage.setItem('user', JSON.stringify(res.user))
+          localStorage.setItem('token', res.token)
           this.router.navigate(['/profile'])
         }
       },
