@@ -31,12 +31,14 @@ const loginUser = async (req, res, next) => {
     }
 }
 
-// const updateProfile = async (req, res, next) => {
-//     try {
-//         const user = UserModel.findOne()
-//     } catch (error) {
-//         next(error)
-//     }
-// }
+const updateProfile = async (req, res, next) => {
+    const  { id } = req.user;
+    try {
+        const user = await UserModel.findOneAndUpdate({_id: id}, req.body, { new: true });
+        res.status(200).json({ message: 'Updated succesfully', user: user })
+    } catch (error) {
+        next(error)
+    }
+}
 
-module.exports = { registerUser, loginUser };
+module.exports = { registerUser, loginUser, updateProfile };

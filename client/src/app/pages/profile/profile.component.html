@@ -1,8 +1,14 @@
 <div class="bg-blue-300 h-full flex justify-center items-center">
-    <div class="shadow-sm bg-white p-3 rounded-sm min-w-70 flex flex-col gap-3">
-        <p class="font-bold">Profile</p>
-        <input type="text" placeholder="Name" class="w-100 border border-gray-300 rounded-sm p-2" />
-        <input type="text" placeholder="Gender" class="w-100 border border-gray-300 rounded-sm p-2" />
-        <button class="border-2 border-gray-300 p-1 rounded-sm text-gray-500 cursor-pointer hover:bg-blue-500 hover:text-white hover:border-transparent">Save</button>
-    </div>
+    <form [formGroup]="profileForm" (ngSubmit)="updateProfile()">
+        <div class="shadow-sm bg-white p-3 rounded-sm min-w-70 flex flex-col gap-3">
+            <p class="font-bold">Profile</p>
+            <input type="text" placeholder="Name" formControlName="name" class="w-100 border border-gray-300 rounded-sm p-2" />
+            <select class="w-100 border border-gray-300 rounded-sm p-2" formControlName="gender">
+                <option value="">Select</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+            <button class="border-2 border-gray-300 p-1 rounded-sm text-gray-500 cursor-pointer hover:bg-blue-500 hover:text-white hover:border-transparent">Save</button>
+        </div>
+    </form>
 </div>
