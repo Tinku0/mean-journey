@@ -1,5 +1,7 @@
-<nav class="flex items-center justify-between p-2 bg-blue-500">
+<nav class="flex items-center p-2 bg-black text-white px-5 h-16">
     <p>Inventory Management</p>
-    <a [routerLink]="'/profile'">Profile</a>
-    <button class="bg-white shadow-sm p-1 rounded-sm cursor-pointer" (click)="logout()">Logout</button>
+    <div class="ms-auto flex items-center gap-5">
+        <a [routerLink]="'/profile'">Profile</a>
+        <button class="bg-white text-black text-sm shadow-sm p-3 rounded-sm cursor-pointer" (click)="logout()">Logout</button>
+    </div>
 </nav>
