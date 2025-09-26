@@ -8,11 +8,11 @@ export const AuthGuard: CanActivateFn = (route, state) => {
   try {
     user = storedUser ? JSON.parse(storedUser) : null;
   } catch (error) {
-    user = null
+    user = null;
   }
-  if(user && user._id){
-    return true
-  }else{
+  if (user && user._id) {
+    return true;
+  } else {
     router.navigate(['/login']);
     return false;
   }
