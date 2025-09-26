@@ -1,4 +1,5 @@
 const UserModel = require("../models/user");
+const jwt = require('jsonwebtoken');
 
 const registerUser = async (req, res, next) => {
     try {
@@ -22,13 +23,20 @@ const loginUser = async (req, res, next) => {
             res.status(401).json({ status: false, message: 'User does not exist' })
         }
         if(user){
-            const userObj = user.toObject();
-            delete userObj.password;
-            res.send({ status: true, user: userObj })
+            const token = jwt.sign({ id: user._id, email: user.email }, process.env.JWT_SECRET, { expiresIn: '1h' })
+            res.send({ status: true, token: token })
         }
     } catch (error) {
         next(error)
     }
 }
+
+// const updateProfile = async (req, res, next) => {
+//     try {
+//         const user = UserModel.findOne()
+//     } catch (error) {
+//         next(error)
+//     }
+// }
 
 module.exports = { registerUser, loginUser };
