@@ -21,7 +21,11 @@ const loginUser = async (req, res, next) => {
         if(!user){
             res.status(401).json({ status: false, message: 'User does not exist' })
         }
-        if(user){res.send({ status: true, user: user })}
+        if(user){
+            const userObj = user.toObject();
+            delete userObj.password;
+            res.send({ status: true, user: userObj })
+        }
     } catch (error) {
         next(error)
     }
