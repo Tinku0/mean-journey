@@ -21,7 +21,7 @@ export class LoginComponent {
 
   constructor(private http: HttpClient, private router: Router) {
     this.loginForm = new FormGroup({
-      username: new FormControl('', Validators.required),
+      email: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
     });
   }
@@ -31,7 +31,8 @@ export class LoginComponent {
       next: (res: any) => {
         if(res.status){
           this.loginForm.reset()
-          // this.router.navigate(['/login'])
+          localStorage.setItem('user', JSON.stringify(res.user))
+          this.router.navigate(['/profile'])
         }
       },
       error: (err) => {
